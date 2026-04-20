@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RealCRM — Real Estate CRM</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">RC</div>
+    <span class="logo-text">RealCRM</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-view="dashboard">
+      <svg viewBox="0 0 20 20"><path d="M3 4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 8a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm8-8a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V4zm0 8a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" data-view="people">
+      <svg viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+      <span>People</span>
+    </a>
+    <a href="#" class="nav-item" data-view="pipeline">
+      <svg viewBox="0 0 20 20"><path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h7a1 1 0 100-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM15 11a1 1 0 10-2 0v4.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 15.586V11z"/></svg>
+      <span>Pipeline</span>
+    </a>
+    <a href="#" class="nav-item" data-view="inbox">
+      <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+      <span>Inbox</span>
+      <span class="nav-badge" id="inbox-badge">3</span>
+    </a>
+    <a href="#" class="nav-item" data-view="tasks">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+      <span>Tasks</span>
+      <span class="nav-badge" id="tasks-badge">5</span>
+    </a>
+    <a href="#" class="nav-item" data-view="texts">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+      <span>Texts</span>
+    </a>
+    <a href="#" class="nav-item" data-view="reports">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"/></svg>
+      <span>Reports</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <a href="#" class="nav-item" data-view="settings">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+      <span>Settings</span>
+    </a>
+    <div class="user-avatar-wrap">
+      <div class="user-avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Agent</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content" id="main">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+      </button>
+      <div class="topbar-search">
+        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        <input type="text" placeholder="Search people, addresses, notes..." id="globalSearch">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-primary" id="addPersonBtn">
+        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+        Add Person
+      </button>
+      <div class="notif-bell">
+        <svg viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+        <span class="notif-dot"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== DASHBOARD VIEW ===== -->
+  <section class="view active" id="view-dashboard">
+    <div class="view-header">
+      <h1 class="view-title">Dashboard</h1>
+      <div class="view-header-actions">
+        <select class="select-sm">
+          <option>Last 30 days</option>
+          <option>Last 7 days</option>
+          <option>Last 90 days</option>
+          <option>This year</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">New Leads</div>
+        <div class="stat-value" id="stat-new-leads">24</div>
+        <div class="stat-change positive">+12% vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Contacted</div>
+        <div class="stat-value" id="stat-contacted">18</div>
+        <div class="stat-change positive">+5% vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Under Contract</div>
+        <div class="stat-value" id="stat-contract">4</div>
+        <div class="stat-change negative">-2% vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Closed</div>
+        <div class="stat-value" id="stat-closed">2</div>
+        <div class="stat-change positive">+100% vs last period</div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Action Items</h3>
+          <a href="#" class="link-sm" data-view-link="tasks">View all</a>
+        </div>
+        <div class="action-items-list" id="dashTaskList"></div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Recent Activity</h3>
+        </div>
+        <div class="activity-feed" id="activityFeed"></div>
+      </div>
+    </div>
+
+    <div class="dash-card mt-16">
+      <div class="dash-card-header">
+        <h3>Pipeline Overview</h3>
+        <a href="#" class="link-sm" data-view-link="pipeline">View pipeline</a>
+      </div>
+      <div class="pipeline-overview-bars" id="pipelineBars"></div>
+    </div>
+  </section>
+
+  <!-- ===== PEOPLE VIEW ===== -->
+  <section class="view" id="view-people">
+    <div class="view-header">
+      <h1 class="view-title">People</h1>
+      <div class="view-header-actions">
+        <div class="filter-tabs" id="peopleFilterTabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="lead">Leads</button>
+          <button class="filter-tab" data-filter="prospect">Prospects</button>
+          <button class="filter-tab" data-filter="active">Active</button>
+          <button class="filter-tab" data-filter="past client">Past Clients</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-toolbar">
+      <div class="people-search-wrap">
+        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        <input type="text" placeholder="Search people..." id="peopleSearch" class="people-search-input">
+      </div>
+      <div class="people-toolbar-right">
+        <select class="select-sm" id="stageFilter">
+          <option value="">All Stages</option>
+          <option>New</option>
+          <option>Attempted Contact</option>
+          <option>Connected</option>
+          <option>Nurture</option>
+          <option>Appointment Set</option>
+          <option>Met</option>
+          <option>Agreement Signed</option>
+          <option>Active Buyer</option>
+          <option>Active Seller</option>
+          <option>Under Contract</option>
+          <option>Closed</option>
+          <option>Dead</option>
+        </select>
+        <select class="select-sm" id="sourceFilter">
+          <option value="">All Sources</option>
+          <option>Zillow</option>
+          <option>Realtor.com</option>
+          <option>Website</option>
+          <option>Referral</option>
+          <option>Social Media</option>
+          <option>Cold Call</option>
+          <option>Open House</option>
+          <option>Manual</option>
+        </select>
+        <button class="btn btn-outline" id="importBtn">Import</button>
+      </div>
+    </div>
+
+    <div class="people-count"><span id="peopleCount">0</span> people</div>
+
+    <div class="table-wrap">
+      <table class="people-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="selectAll"></th>
+            <th class="sortable" data-col="name">Name <svg viewBox="0 0 20 20" class="sort-icon"><path d="M5 12l5-5 5 5H5z"/></svg></th>
+            <th class="sortable" data-col="stage">Stage</th>
+            <th>Source</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th class="sortable" data-col="lastActivity">Last Activity</th>
+            <th>Price Range</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="peopleTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== PIPELINE VIEW ===== -->
+  <section class="view" id="view-pipeline">
+    <div class="view-header">
+      <h1 class="view-title">Pipeline</h1>
+      <div class="view-header-actions">
+        <div class="view-toggle">
+          <button class="view-toggle-btn active" id="kanbanViewBtn">
+            <svg viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            Kanban
+          </button>
+          <button class="view-toggle-btn" id="listViewBtn">
+            <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+            List
+          </button>
+        </div>
+        <select class="select-sm" id="pipelineTypeFilter">
+          <option value="">All Types</option>
+          <option>Buyer</option>
+          <option>Seller</option>
+        </select>
+      </div>
+    </div>
+    <div class="pipeline-board" id="pipelineBoard"></div>
+  </section>
+
+  <!-- ===== INBOX VIEW ===== -->
+  <section class="view" id="view-inbox">
+    <div class="view-header">
+      <h1 class="view-title">Inbox</h1>
+    </div>
+    <div class="inbox-layout">
+      <div class="inbox-sidebar">
+        <div class="inbox-tabs">
+          <button class="inbox-tab active" data-inbox="all">All</button>
+          <button class="inbox-tab" data-inbox="email">Email</button>
+          <button class="inbox-tab" data-inbox="text">Text</button>
+        </div>
+        <div class="inbox-list" id="inboxList"></div>
+      </div>
+      <div class="inbox-content" id="inboxContent">
+        <div class="inbox-empty">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <p>Select a conversation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TASKS VIEW ===== -->
+  <section class="view" id="view-tasks">
+    <div class="view-header">
+      <h1 class="view-title">Tasks</h1>
+      <div class="view-header-actions">
+        <select class="select-sm" id="taskTypeFilter">
+          <option value="">All Types</option>
+          <option>Call</option>
+          <option>Email</option>
+          <option>Text</option>
+          <option>Follow Up</option>
+          <option>Other</option>
+        </select>
+        <button class="btn btn-primary" id="addTaskBtn">+ Add Task</button>
+      </div>
+    </div>
+    <div class="tasks-layout">
+      <div class="task-group">
+        <div class="task-group-header overdue">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          Overdue
+        </div>
+        <div class="task-list" id="taskListOverdue"></div>
+      </div>
+      <div class="task-group">
+        <div class="task-group-header today">
+          <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+          Today
+        </div>
+        <div class="task-list" id="taskListToday"></div>
+      </div>
+      <div class="task-group">
+        <div class="task-group-header upcoming">
+          <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4l3 3a1 1 0 001.414-1.414L11 9.586V6z"/></svg>
+          Upcoming
+        </div>
+        <div class="task-list" id="taskListUpcoming"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEXTS VIEW ===== -->
+  <section class="view" id="view-texts">
+    <div class="view-header">
+      <h1 class="view-title">Texts</h1>
+      <div class="view-header-actions">
+        <button class="btn btn-primary" id="newTextBtn">+ New Conversation</button>
+      </div>
+    </div>
+    <div class="texts-layout">
+      <div class="texts-sidebar">
+        <div class="texts-search">
+          <input type="text" placeholder="Search conversations..." id="textsSearch">
+        </div>
+        <div class="texts-list" id="textsList"></div>
+      </div>
+      <div class="texts-content" id="textsContent">
+        <div class="inbox-empty">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <p>Select a conversation to start texting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REPORTS VIEW ===== -->
+  <section class="view" id="view-reports">
+    <div class="view-header">
+      <h1 class="view-title">Reports</h1>
+      <div class="view-header-actions">
+        <select class="select-sm">
+          <option>Last 30 days</option>
+          <option>Last 7 days</option>
+          <option>Last 90 days</option>
+          <option>This year</option>
+        </select>
+      </div>
+    </div>
+    <div class="reports-grid">
+      <div class="report-card">
+        <h3>Lead Source Breakdown</h3>
+        <div class="chart-placeholder" id="sourceChart"></div>
+      </div>
+      <div class="report-card">
+        <h3>Stage Distribution</h3>
+        <div class="chart-placeholder" id="stageChart"></div>
+      </div>
+      <div class="report-card full-width">
+        <h3>Lead Volume Over Time</h3>
+        <div class="chart-placeholder tall" id="volumeChart"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SETTINGS VIEW ===== -->
+  <section class="view" id="view-settings">
+    <div class="view-header">
+      <h1 class="view-title">Settings</h1>
+    </div>
+    <div class="settings-layout">
+      <nav class="settings-nav">
+        <a href="#" class="settings-nav-item active" data-settings="profile">Profile</a>
+        <a href="#" class="settings-nav-item" data-settings="team">Team</a>
+        <a href="#" class="settings-nav-item" data-settings="stages">Stages</a>
+        <a href="#" class="settings-nav-item" data-settings="sources">Lead Sources</a>
+        <a href="#" class="settings-nav-item" data-settings="notifications">Notifications</a>
+      </nav>
+      <div class="settings-content" id="settingsContent">
+        <div class="settings-section">
+          <h3>Profile Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-input" value="John">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-input" value="Doe">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-input" value="john.doe@realestate.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" class="form-input" value="(555) 123-4567">
+          </div>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== PERSON DETAIL MODAL ===== -->
+<div class="modal-overlay" id="personModal">
+  <div class="modal person-modal">
+    <div class="modal-header">
+      <div class="modal-person-info">
+        <div class="modal-avatar" id="modalAvatar">JD</div>
+        <div>
+          <h2 class="modal-person-name" id="modalName">John Doe</h2>
+          <div class="modal-person-meta" id="modalMeta">New Lead · Added today</div>
+        </div>
+      </div>
+      <div class="modal-header-actions">
+        <select class="stage-select" id="modalStageSelect">
+          <option>New</option>
+          <option>Attempted Contact</option>
+          <option>Connected</option>
+          <option>Nurture</option>
+          <option>Appointment Set</option>
+          <option>Met</option>
+          <option>Agreement Signed</option>
+          <option>Active Buyer</option>
+          <option>Active Seller</option>
+          <option>Under Contract</option>
+          <option>Closed</option>
+          <option>Dead</option>
+        </select>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-left">
+        <!-- Contact Actions -->
+        <div class="contact-action-bar">
+          <button class="action-btn" id="sendEmailBtn">
+            <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            Email
+          </button>
+          <button class="action-btn" id="sendTextBtn">
+            <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+            Text
+          </button>
+          <button class="action-btn" id="logCallBtn">
+            <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Log Call
+          </button>
+          <button class="action-btn" id="addNoteBtn">
+            <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+            Note
+          </button>
+          <button class="action-btn" id="addTaskModalBtn">
+            <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+            Task
+          </button>
+        </div>
+
+        <!-- Activity Timeline -->
+        <div class="activity-section">
+          <div class="activity-filter-tabs">
+            <button class="act-tab active" data-act="all">All</button>
+            <button class="act-tab" data-act="notes">Notes</button>
+            <button class="act-tab" data-act="emails">Emails</button>
+            <button class="act-tab" data-act="texts">Texts</button>
+            <button class="act-tab" data-act="calls">Calls</button>
+            <button class="act-tab" data-act="tasks">Tasks</button>
+          </div>
+          <div class="activity-timeline" id="activityTimeline"></div>
+        </div>
+
+        <!-- Inline note/email compose area -->
+        <div class="compose-area" id="composeArea" style="display:none">
+          <div class="compose-header">
+            <span id="composeTitle">Add Note</span>
+            <button class="compose-close" id="composeClose">✕</button>
+          </div>
+          <textarea class="compose-body" id="composeBody" placeholder="Write here..."></textarea>
+          <div class="compose-footer">
+            <button class="btn btn-primary btn-sm" id="composeSend">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-right">
+        <!-- Contact Details -->
+        <div class="detail-card">
+          <div class="detail-card-header">
+            <span>Contact Info</span>
+            <button class="edit-btn" data-edit="contact">Edit</button>
+          </div>
+          <div class="detail-fields" id="contactFields"></div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-card-header">
+            <span>Lead Details</span>
+            <button class="edit-btn" data-edit="lead">Edit</button>
+          </div>
+          <div class="detail-fields" id="leadFields"></div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-card-header">
+            <span>Tags</span>
+            <button class="edit-btn" data-edit="tags">+ Add</button>
+          </div>
+          <div class="tags-wrap" id="tagsWrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADD PERSON MODAL ===== -->
+<div class="modal-overlay" id="addPersonModal">
+  <div class="modal add-modal">
+    <div class="modal-header">
+      <h2>Add Person</h2>
+      <button class="modal-close" id="addModalClose">✕</button>
+    </div>
+    <div class="modal-body" style="display:block;padding:24px;">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" class="form-input" id="addFirstName" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-input" id="addLastName" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-input" id="addEmail" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" class="form-input" id="addPhone" placeholder="(555) 000-0000">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Stage</label>
+          <select class="form-input" id="addStage">
+            <option>New</option>
+            <option>Attempted Contact</option>
+            <option>Connected</option>
+            <option>Nurture</option>
+            <option>Appointment Set</option>
+            <option>Met</option>
+            <option>Agreement Signed</option>
+            <option>Active Buyer</option>
+            <option>Active Seller</option>
+            <option>Under Contract</option>
+            <option>Closed</option>
+            <option>Dead</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Source</label>
+          <select class="form-input" id="addSource">
+            <option>Manual</option>
+            <option>Zillow</option>
+            <option>Realtor.com</option>
+            <option>Website</option>
+            <option>Referral</option>
+            <option>Social Media</option>
+            <option>Cold Call</option>
+            <option>Open House</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select class="form-input" id="addType">
+            <option>Buyer</option>
+            <option>Seller</option>
+            <option>Both</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Price Range</label>
+          <input type="text" class="form-input" id="addPrice" placeholder="e.g. $300k - $500k">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea class="form-input" id="addNotes" rows="3" placeholder="Any initial notes..."></textarea>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:16px;">
+        <button class="btn btn-outline" id="addPersonCancel">Cancel</button>
+        <button class="btn btn-primary" id="addPersonSave">Add Person</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADD TASK MODAL ===== -->
+<div class="modal-overlay" id="addTaskModal">
+  <div class="modal add-modal">
+    <div class="modal-header">
+      <h2>Add Task</h2>
+      <button class="modal-close" id="taskModalClose">✕</button>
+    </div>
+    <div class="modal-body" style="display:block;padding:24px;">
+      <div class="form-group">
+        <label>Task Description *</label>
+        <input type="text" class="form-input" id="taskDesc" placeholder="What needs to be done?">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select class="form-input" id="taskType">
+            <option>Follow Up</option>
+            <option>Call</option>
+            <option>Email</option>
+            <option>Text</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" class="form-input" id="taskDueDate">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Assign to Person</label>
+        <select class="form-input" id="taskPersonSelect">
+          <option value="">No person assigned</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:16px;">
+        <button class="btn btn-outline" id="taskCancel">Cancel</button>
+        <button class="btn btn-primary" id="taskSave">Add Task</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
